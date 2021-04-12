@@ -41,8 +41,8 @@ public class SalaryController {
     public ResponseEntity<?>getSalaryByEmployee(UUID employeeId,HttpServletRequest httpServletRequest){
         return ResponseEntity.ok(service.getSalaryByEmployee(employeeId,httpServletRequest));
     }
-    @GetMapping("/getSalaryByMonth}")
-    public ResponseEntity<?> getSalaryByMonth(String month, Integer year, HttpServletRequest httpServletRequest){
+    @GetMapping("/{getSalaryByMonth}")
+    public ResponseEntity<?> getSalaryByMonth(@RequestParam String month, @RequestParam Integer year, HttpServletRequest httpServletRequest){
         ApiResponse response = service.getSalaryByMonth(month,year, httpServletRequest);
         return ResponseEntity.status(response.isSuccess()?202:409).body(response);
     }
